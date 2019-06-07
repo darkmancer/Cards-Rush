@@ -1,0 +1,337 @@
+/*
+ * Html, head and body
+ */
+
+ html {
+	box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Coda', cursive;
+	color: #fff;
+	background: linear-gradient(45deg, #EE7752, #23D5AB, #E73C7E, #23A6D5);
+	background-size: 400% 400%;
+	animation: Gradient 15s ease infinite;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+h1 {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+}
+
+
+/*
+ * Styles for the deck of cards
+ */
+
+.deck {
+	width: 660px;
+	min-height: 680px;
+	background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+	padding: 32px;
+	border-radius: 10px;
+	box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0 0 3em;
+}
+
+.card {
+	height: 125px;
+	width: 125px;
+	background: #2e3d49;
+	font-size: 0;
+	color: #ffffff;
+	border-radius: 8px;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+	transition: font-size 0.3s cubic-bezier(0.61, -0.19, 0.7, -0.11), transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.5s;
+}
+
+.deck .card.match {
+	cursor: default;
+	background: #02ccba;
+	font-size: 33px;
+}
+
+
+/*
+ * Card Animation
+ */
+
+.card.open .fab {
+	transform: rotateY(180deg);
+}
+
+.deck .card.open {
+	transform: rotateY(180deg);
+	background: #02b3e4;
+	cursor: default;
+}
+
+.deck .card.show {
+	font-size: 33px;
+}
+
+
+/*
+ * Styles for the Score Panel
+ */
+
+.score-panel {
+	text-align: left;
+	width: 345px;
+	margin-bottom: 10px;
+}
+
+.score-panel .stars {
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	margin: 0 5px 0 0;
+}
+
+.score-panel .stars li {
+	list-style: none;
+	display: inline-block;
+}
+
+.score-panel .restart {
+	float: right;
+	cursor: pointer;
+}
+
+.the-moves {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+}
+
+.stop-clickable {
+	pointer-events: none;
+}
+
+.start-clickable {
+	pointer-events: auto;
+}
+
+#timer {
+	text-align: right;
+	color: red;
+}
+
+.stars {
+	color: #ffcd00;
+}
+
+#second,
+#centi-second {
+	text-align: center;
+}
+
+
+/*
+ * Footer
+ */
+
+.footer {
+	text-align: center;
+	margin: 4%;
+}
+
+
+/*
+ * Styling Modal
+ */
+
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+	width: 60%;
+	margin: 20% auto;
+	border-radius: 8px;
+	background-color: #f4f4f4;
+	box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
+	animation-name: ModalOpen;
+	animation-duration: 1s;
+}
+
+.modal-header {
+	background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+	padding: 15px;
+	color: #fff;
+}
+
+.modal-header h2 {
+	text-align: center;
+	margin: 0;
+}
+
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+	color: #000;
+	cursor: pointer;
+	font-size: 10px;
+}
+
+.modal-body {
+	color: black;
+	padding: 10px 20px;
+	text-align: center;
+}
+
+.replay {
+	padding: 1em;
+}
+
+.modal-replay-btn {
+	display: block;
+	background-color: #8c4ed6;
+	color: white;
+	font-size: 30px;
+	font-weight: normal;
+	padding: 10px 25px;
+	border: none;
+	border-radius: 8px;
+	margin: auto;
+	box-shadow: 7px 7px 30px #999999;
+	transition: box-shadow 0.5s;
+}
+
+.modal-replay-btn:hover,
+.modal-replay-btn:focus {
+	box-shadow: 3px 3px 8px #6F6F6F;
+	background-color: #9759E3;
+	cursor: pointer;
+}
+
+
+/*
+ * Background Animation 
+ */
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes ModalOpen {
+	from {
+		opacity: 0
+	}
+	to {
+		opacity: 1
+	}
+}
+
+
+/* 
+ * Responsive part
+ */
+
+@media screen and (max-width: 650px) {
+	.score-panel {
+		width: 90%;
+		margin: 0 auto;
+		flex-basis: 40%;
+	}
+	.deck {
+		width: 95%;
+		padding: 3%;
+		margin: 0 auto;
+		min-height: 100%;
+	}
+	.deck .card {
+		height: 92px;
+		margin-top: 2%;
+	}
+	.modal {
+		width: 90%;
+		left: 5%;
+		top: 25%;
+		margin: auto 0;
+	}
+}
+
+@media screen and (max-width: 368px) {
+	.deck .card {
+		width: 68px;
+		height: 92px;
+		margin-top: 2%;
+	}
+	.modal {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+}
+
+@media screen and (min-width: 369px) and (max-width: 460px) {
+	.deck .card {
+		width: 82px;
+	}
+}
+
+@media screen and (min-width: 461px) and (max-width: 516px) {
+	.deck .card {
+		width: 92px;
+	}
+}
+
+@media screen and (min-width: 517px) and (max-width: 580px) {
+	.deck .card {
+		width: 105px;
+	}
+}
+
+@media screen and (max-width: 650px) {
+	.modal {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+}
